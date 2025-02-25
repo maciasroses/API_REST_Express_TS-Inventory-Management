@@ -14,9 +14,9 @@
 
 1. Clone the repository
 
-> `git clone <URL>`
+> `git clone https://github.com/maciasroses/API_REST_Express_TS-Inventory-Management`
 >
-> `cd <URL>`
+> `cd https://github.com/maciasroses/API_REST_Express_TS-Inventory-Management`
 
 2. Build and start the Docker container:
 
@@ -29,6 +29,10 @@
 ### Overview
 
 This project is an API for managing inventory, built with Node.js, Express, and Typescript. It uses PostgreSQL for data storage and Redis for caching. The API provides endpoints for managing products, stores, and inventory, including transferring products between stores and retrieving low stock alerts.
+
+### Database Model
+
+<img alt="Database model" src="database model.png" />
 
 ### Endpoints
 
@@ -114,9 +118,9 @@ This project is an API for managing inventory, built with Node.js, Express, and 
 
 1. Clone the repository:
 
-   > `git clone <URL>`
+   > `git clone https://github.com/maciasroses/API_REST_Express_TS-Inventory-Management`
    >
-   > `cd <URL>`
+   > `cd https://github.com/maciasroses/API_REST_Express_TS-Inventory-Management`
 
 2. Install the Fly.io CLI:
 
