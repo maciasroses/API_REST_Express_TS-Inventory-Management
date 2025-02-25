@@ -1,0 +1,922 @@
+{
+	"info": {
+		"_postman_id": "54350707-a367-4907-b942-be1918b366ed",
+		"name": "API-REST INVENTORY MANAGEMENT",
+		"description": "This is a collection of API REST for inventory management.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20262055"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test\",\n    \"description\": \"test\",\n    \"category\": \"test\",\n    \"price\": 22,\n    \"sku\": \"test\",\n    \"storeId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"quantity\": 22,\n    \"minStock\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						},
+						"description": "This endpoint allows to create a new product."
+					},
+					"response": [
+						{
+							"name": "Successful Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"test\",\n    \"description\": \"test\",\n    \"category\": \"test\",\n    \"price\": 22,\n    \"sku\": \"test\",\n    \"storeId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"quantity\": 22,\n    \"minStock\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"data\": {\n        \"id\": \"e8019f40-58a5-4109-96bb-e98baeaddab2\",\n        \"name\": \"test\",\n        \"description\": \"test\",\n        \"category\": \"test\",\n        \"price\": \"22.00\",\n        \"sku\": \"test\",\n        \"created_at\": \"2025-02-24T20:26:11.880Z\",\n        \"updated_at\": \"2025-02-24T20:26:11.880Z\"\n    },\n    \"pagination\": {},\n    \"errors\": {}\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"test\",\n    \"description\": \"test\",\n    \"price\": 22,\n    \"quantity\": 22,\n    \"minStock\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation errors\",\n    \"data\": {},\n    \"pagination\": {},\n    \"errors\": {\n        \"category\": \"Required\",\n        \"sku\": \"Required\",\n        \"storeId\": \"Required\"\n    }\n}"
+						},
+						{
+							"name": "Store Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"test\",\n    \"description\": \"test\",\n    \"category\": \"test\",\n    \"price\": 22,\n    \"sku\": \"new-test\",\n    \"storeId\": \"123e4567-e89b-12d3-a456-426614174002\",\n    \"quantity\": 22,\n    \"minStock\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Store not found\",\n    \"data\": {},\n    \"pagination\": {},\n    \"errors\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Read products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Electronics",
+									"disabled": true
+								},
+								{
+									"key": "minPrice",
+									"value": "300",
+									"disabled": true
+								},
+								{
+									"key": "maxPrice",
+									"value": "600",
+									"disabled": true
+								},
+								{
+									"key": "minStock",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "maxStock",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This endpoint allows to read all products. in addition to filtering with different parameters."
+					},
+					"response": [
+						{
+							"name": "Successful Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": \"bb7cfc89-4137-4823-a1a2-65a3f5c4573e\",\n            \"name\": \"4K Monitor\",\n            \"description\": \"27-inch monitor with 4K resolution\",\n            \"category\": \"Electronics\",\n            \"price\": \"300.00\",\n            \"sku\": \"MONITOR-4K-003\",\n            \"created_at\": \"2025-02-24T20:24:19.948Z\",\n            \"updated_at\": \"2025-02-24T20:24:19.948Z\",\n            \"stock\": 0,\n            \"storeid\": \"a1b2c3d4-e56f-78a9-b012-345678901234\"\n        },\n        {\n            \"id\": \"6ba7b810-9dad-11d1-80b4-00c04fd430c8\",\n            \"name\": \"Gaming Laptop\",\n            \"description\": \"High performance laptop for gaming\",\n            \"category\": \"Electronics\",\n            \"price\": \"1500.00\",\n            \"sku\": \"LAPTOP-GAMER-001\",\n            \"created_at\": \"2025-02-24T20:24:19.947Z\",\n            \"updated_at\": \"2025-02-24T20:24:19.947Z\",\n            \"stock\": 10,\n            \"storeid\": \"123e4567-e89b-12d3-a456-426614174000\"\n        }\n    ],\n    \"pagination\": {\n        \"total\": 5,\n        \"page\": 1,\n        \"page_size\": 2,\n        \"total_pages\": 3,\n        \"has_next\": true,\n        \"has_previous\": false\n    },\n    \"errors\": {}\n}"
+						},
+						{
+							"name": "Filter by Category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products?category=Electronics",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "category",
+											"value": "Electronics"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": \"bb7cfc89-4137-4823-a1a2-65a3f5c4573e\",\n            \"name\": \"4K Monitor\",\n            \"description\": \"27-inch monitor with 4K resolution\",\n            \"category\": \"Electronics\",\n            \"price\": \"300.00\",\n            \"sku\": \"MONITOR-4K-003\",\n            \"created_at\": \"2025-02-24T20:24:19.948Z\",\n            \"updated_at\": \"2025-02-24T20:24:19.948Z\",\n            \"stock\": 0,\n            \"storeid\": \"a1b2c3d4-e56f-78a9-b012-345678901234\"\n        },\n        {\n            \"id\": \"6ba7b810-9dad-11d1-80b4-00c04fd430c8\",\n            \"name\": \"Gaming Laptop\",\n            \"description\": \"High performance laptop for gaming\",\n            \"category\": \"Electronics\",\n            \"price\": \"1500.00\",\n            \"sku\": \"LAPTOP-GAMER-001\",\n            \"created_at\": \"2025-02-24T20:24:19.947Z\",\n            \"updated_at\": \"2025-02-24T20:24:19.947Z\",\n            \"stock\": 10,\n            \"storeid\": \"123e4567-e89b-12d3-a456-426614174000\"\n        }\n    ],\n    \"pagination\": {\n        \"total\": 3,\n        \"page\": 1,\n        \"page_size\": 2,\n        \"total_pages\": 2,\n        \"has_next\": true,\n        \"has_previous\": false\n    },\n    \"errors\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Read product by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+							]
+						},
+						"description": "This endpoint allows to read a specific product by its id."
+					},
+					"response": [
+						{
+							"name": "Successful Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/products/6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"products",
+										"6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"data\": {\n        \"id\": \"6ba7b810-9dad-11d1-80b4-00c04fd430c8\",\n        \"name\": \"Gaming Laptop\",\n        \"description\": \"High performance laptop for gaming\",\n        \"category\": \"Electronics\",\n        \"price\": \"1500.00\",\n        \"sku\": \"LAPTOP-GAMER-001\",\n        \"created_at\": \"2025-02-24T20:24:19.947Z\",\n        \"updated_at\": \"2025-02-24T20:24:19.947Z\",\n        \"stock\": 10\n    },\n    \"pagination\": {},\n    \"errors\": {}\n}"
+						},
+						{
+							"name": "Invalid UUID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/invalidad-uuid",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										"invalidad-uuid"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid UUID\",\n    \"data\": {},\n    \"pagination\": {},\n    \"errors\": {}\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/6ba7b810-9dad-11d1-80b4-00c04fd430c9",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										"6ba7b810-9dad-11d1-80b4-00c04fd430c9"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product not found\",\n    \"data\": {},\n    \"pagination\": {},\n    \"errors\": {}\n}"
+						},
+						{
+							"name": "Invalid UUID Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/invalidad-uuid",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										"invalidad-uuid"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Update product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Gaming Laptop updated\",\n    \"description\": \"High performance laptop for gaming\",\n    \"category\": \"Electronics\",\n    \"price\": 1500,\n    \"sku\": \"LAPTOP-GAMER-001\",\n    \"storeId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"quantity\": 20,\n    \"minStock\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products/6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+							]
+						},
+						"description": "This endpoint allows to update a specific product by its id."
+					},
+					"response": [
+						{
+							"name": "Successful Response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Gaming Laptop updated\",\n    \"description\": \"High performance laptop for gaming\",\n    \"category\": \"Electronics\",\n    \"price\": 1500,\n    \"sku\": \"LAPTOP-GAMER-001\",\n    \"storeId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"quantity\": 1,\n    \"minStock\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/products/6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"products",
+										"6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"data\": {\n        \"id\": \"6ba7b810-9dad-11d1-80b4-00c04fd430c8\",\n        \"name\": \"Gaming Laptop updated\",\n        \"description\": \"High performance laptop for gaming\",\n        \"category\": \"Electronics\",\n        \"price\": \"1500.00\",\n        \"sku\": \"LAPTOP-GAMER-001\",\n        \"created_at\": \"2025-02-24T20:24:19.947Z\",\n        \"updated_at\": \"2025-02-24T20:28:14.833Z\"\n    },\n    \"pagination\": {},\n    \"errors\": {}\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Gaming Laptop updated\",\n    \"description\": \"High performance laptop for gaming\",\n    \"category\": \"Electronics\",\n    \"price\": 1500,\n    \"sku\": \"LAPTOP-GAMER-001\",\n    \"storeId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"quantity\": 20,\n    \"minStock\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/products/6ba7b810-9dad-11d1-80b4-00c04fd430c2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										"6ba7b810-9dad-11d1-80b4-00c04fd430c2"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product not found\",\n    \"data\": {},\n    \"pagination\": {},\n    \"errors\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+							]
+						},
+						"description": "This endpoint allows to delete a specific product by its id."
+					},
+					"response": [
+						{
+							"name": "Successful Response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/products/6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"products",
+										"6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/6ba7b810-9dad-11d1-80b4-00c04fd430c2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										"6ba7b810-9dad-11d1-80b4-00c04fd430c2"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Product not found\",\n    \"data\": {},\n    \"pagination\": {},\n    \"errors\": {}\n}"
+						}
+					]
+				}
+			],
+			"description": "The `/products` endpoint allows to manage products in the inventory."
+		},
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "Read alerts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/inventory/alerts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"inventory",
+								"alerts"
+							]
+						},
+						"description": "This endpoint allows to read the insufficient alerts."
+					},
+					"response": [
+						{
+							"name": "Successful Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/inventory/alerts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"inventory",
+										"alerts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"storeid\": \"a1b2c3d4-e56f-78a9-b012-345678901234\",\n            \"productid\": \"bb7cfc89-4137-4823-a1a2-65a3f5c4573e\",\n            \"product\": \"4K Monitor\",\n            \"quantity\": 0,\n            \"minstock\": 1\n        },\n        {\n            \"storeid\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n            \"productid\": \"6ba7b810-9dad-11d1-80b4-00c04fd430c8\",\n            \"product\": \"Gaming Laptop\",\n            \"quantity\": 1,\n            \"minstock\": 2\n        }\n    ],\n    \"pagination\": {},\n    \"errors\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Transfer product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": \"6ba7b810-9dad-11d1-80b4-00c04fd430c8\",\n    \"sourceStoreId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"targetStoreId\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n    \"quantity\": 1,\n    \"timestamp\": \"2024-02-12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/inventory/transfer",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"inventory",
+								"transfer"
+							]
+						},
+						"description": "This endpoint allows to transfer a specific product by its id between stores by their ids, registering the IN, OUT, and TRANSFER movements."
+					},
+					"response": [
+						{
+							"name": "Successful Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"productId\": \"e8019f40-58a5-4109-96bb-e98baeaddab2\",\n    \"sourceStoreId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"targetStoreId\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n    \"quantity\": 1,\n    \"timestamp\": \"2024-02-12\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/inventory/transfer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"inventory",
+										"transfer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Product transferred successfully\",\n    \"data\": {},\n    \"pagination\": {},\n    \"errors\": {}\n}"
+						},
+						{
+							"name": "Insufficient Stock",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"productId\": \"bb7cfc89-4137-4823-a1a2-65a3f5c4573e\",\n    \"sourceStoreId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"targetStoreId\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n    \"quantity\": 1,\n    \"timestamp\": \"2024-02-12\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/inventory/transfer",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory",
+										"transfer"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Insufficient stock\",\n    \"data\": {},\n    \"pagination\": {},\n    \"errors\": {}\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"productId\": \"6ba7b810-9dad-11d1-80b4-00c04fd430c8\",\n    \"sourceStoreId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"quantity\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/inventory/transfer",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inventory",
+										"transfer"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation errors\",\n    \"data\": {},\n    \"pagination\": {},\n    \"errors\": {\n        \"targetStoreId\": \"Required\",\n        \"timestamp\": \"Required\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "The `/inventory` endpoint allows to manage the alerts of insufficient stock and transfer products in the stores."
+		},
+		{
+			"name": "Stores",
+			"item": [
+				{
+					"name": "Read inventory by store",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stores/123e4567-e89b-12d3-a456-426614174000/inventory",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stores",
+								"123e4567-e89b-12d3-a456-426614174000",
+								"inventory"
+							]
+						},
+						"description": "This endpoint allows to read the inventory of a specific store by its id."
+					},
+					"response": [
+						{
+							"name": "Successful Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/stores/123e4567-e89b-12d3-a456-426614174000/inventory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"stores",
+										"123e4567-e89b-12d3-a456-426614174000",
+										"inventory"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": \"f860b803-7fce-442f-93e4-44005cff8e72\",\n            \"productid\": \"e8019f40-58a5-4109-96bb-e98baeaddab2\",\n            \"product\": \"test\",\n            \"quantity\": 21,\n            \"minstock\": 1\n        },\n        {\n            \"id\": \"d68e8f40-1b3f-4f7c-a890-e7f7a5d4d8c6\",\n            \"productid\": \"e6b9849b-f0c9-4be7-b3e2-7e10fb85d283\",\n            \"product\": \"Wireless Mouse\",\n            \"quantity\": 20,\n            \"minstock\": 5\n        }\n    ],\n    \"pagination\": {},\n    \"errors\": {}\n}"
+						}
+					]
+				}
+			],
+			"description": "The `/stores` endpoint allows you to manage the store inventory"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api",
+			"type": "string"
+		}
+	]
+}
