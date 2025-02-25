@@ -36,6 +36,10 @@ This project is an API for managing inventory, built with Node.js, Express, and 
 
 ### Endpoints
 
+- <strong>Health</strong>
+  - `GET /api/health`: Get the status of the API.
+- <strong>Documentation</strong>
+  - `GET /api-docs`: View the API Swagger Documentation.
 - <strong>Products</strong>
   - `GET /api/products`: Get all products
   - `GET /api/products/:id`: Get a product by ID
