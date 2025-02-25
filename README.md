@@ -30,6 +30,10 @@
 
 This project is an API for managing inventory, built with Node.js, Express, and Typescript. It uses PostgreSQL for data storage and Redis for caching. The API provides endpoints for managing products, stores, and inventory, including transferring products between stores and retrieving low stock alerts.
 
+### Database Model
+
+<img alt="Database model" src="database model.png" />
+
 ### Endpoints
 
 - <strong>Products</strong>
