@@ -1,0 +1,27 @@
+config:
+  target: "http://localhost:3000/api"
+  phases:
+    - duration: 60
+      arrivalRate: 500
+
+scenarios:
+  - name: "Health Check"
+    flow:
+      - get:
+          url: "/health"
+  - name: "Get all products"
+    flow:
+      - get:
+          url: "/products"
+  - name: "Get product by id"
+    flow:
+      - get:
+          url: "/products/bb7cfc89-4137-4823-a1a2-65a3f5c4573e"
+  - name: "Get alerts of insufficient inventory"
+    flow:
+      - get:
+          url: "/inventory/alerts"
+  - name: "Get inventory by store id"
+    flow:
+      - get:
+          url: "/stores/123e4567-e89b-12d3-a456-426614174000/inventory"

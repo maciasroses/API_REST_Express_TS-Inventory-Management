@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "outDir": "dist",
+    "lib": ["ESNext"],
+    "sourceMap": true,
+    "target": "ES2022",
+    "module": "NodeNext",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "typeRoots": ["./node_modules/@types"],
+  },
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
+  "exclude": ["node_modules"]
+}

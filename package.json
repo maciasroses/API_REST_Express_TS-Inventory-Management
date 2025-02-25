@@ -1,0 +1,62 @@
+{
+  "license": "ISC",
+  "version": "1.0.0",
+  "name": "api-rest_inventory-management",
+  "author": "Macías Romero Jorge Humberto",
+  "description": "This is a simple API REST for inventory management",
+  "keywords": [
+    "API",
+    "REST",
+    "Node.js",
+    "Express",
+    "TypeScript",
+    "Swagger",
+    "Inventory",
+    "Management",
+    "PostgreSQL",
+    "Redis",
+    "Artillery",
+    "Jest",
+    "Supertest",
+    "Integration",
+    "Unit",
+    "Load",
+    "Tests",
+    "Zod"
+  ],
+  "scripts": {
+    "start": "node dist/src/server.js",
+    "dev": "tsc --watch & node --watch dist/src/server.js",
+    "build": "tsc",
+    "test": "jest --coverage",
+    "test:unit": "jest --testPathPattern=tests/unit-tests --coverage",
+    "test:integration": "jest --testPathPattern=tests/integration-tests --coverage",
+    "test:load": "artillery run load-test.yml",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "artillery": "^2.0.22",
+    "cors": "2.8.5",
+    "express": "^4.21.2",
+    "ioredis": "^5.5.0",
+    "pg": "^8.13.3",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "zod": "3.24.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.5",
+    "@types/pg": "^8.11.11",
+    "@types/supertest": "^6.0.2",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
