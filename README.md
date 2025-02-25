@@ -14,9 +14,9 @@
 
 1. Clone the repository
 
-> `git clone <URL>`
+> `git clone https://github.com/maciasroses/API_REST_Express_TS-Inventory-Management`
 >
-> `cd <URL>`
+> `cd https://github.com/maciasroses/API_REST_Express_TS-Inventory-Management`
 
 2. Build and start the Docker container:
 
@@ -114,9 +114,9 @@ This project is an API for managing inventory, built with Node.js, Express, and 
 
 1. Clone the repository:
 
-   > `git clone <URL>`
+   > `git clone https://github.com/maciasroses/API_REST_Express_TS-Inventory-Management`
    >
-   > `cd <URL>`
+   > `cd https://github.com/maciasroses/API_REST_Express_TS-Inventory-Management`
 
 2. Install the Fly.io CLI:
 
